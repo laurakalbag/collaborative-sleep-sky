@@ -1,0 +1,204 @@
+/* -- CSS reset
+-------------------------------------------------------------------- */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  position: relative;
+}
+
+html {
+  font-size: 100%; /* all font sizes and rems scale from here */
+}
+
+/* Set core body defaults */
+body {
+  font-family: sans-serif;
+  font-size: 1rem;
+  font-synthesis: none;
+  line-height: 1.35;
+  margin: 0;
+  min-height: 100vh;
+  padding: 1em;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+}
+
+/* Natural flow and rhythm by default */
+main > * + * {
+  margin: 0;
+  margin-top: 2.7em;
+  margin-bottom: 1.35em;
+}
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* A elements that don't have a class get default styles */
+a {
+  text-decoration-skip-ink: auto;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 0.06em;
+  font-variation-settings: 'wght' 600;
+}
+
+/* Make media easier to work with */
+img,
+picture,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  color: inherit;
+  font: inherit;
+  border: inherit;
+  padding: inherit;
+}
+
+/* Style focus for people using keyboard navigation */
+:focus {
+  outline: 0.1rem solid blue;
+  box-shadow: 0 0 0.2rem blue;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  /* hide everything that’s not in the main body of the site */
+  body > *:not(main) {
+    display: none;
+  }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  overflow: hidden !important;
+}
+
+/* Variables */
+
+:root {
+  --background: rgb(127, 123, 201);
+  --background-gradient: linear-gradient(
+    0deg,
+    var(--background) 0%,
+    rgba(80, 62, 124, 1) 35%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  --text: white;
+  --button-background: white;
+  --button-background-hover: rgb(216, 216, 216);
+  --button-background-active: rgb(171, 171, 171);
+  --button-text: black;
+  --star: white;
+}
+
+/* Font */
+
+@font-face {
+  font-family: 'Margherita';
+  src: url('margheritavariablegx.ttf') format('truetype-variations');
+  font-weight: 1 999;
+}
+
+/* Background */
+
+body {
+  background: var(--background) var(--background-gradient);
+  color: var(--text);
+  font-family: 'Margherita', serif;
+  font-synthesis: none;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+#starscape {
+  height: 99vh;
+  position: absolute;
+  width: 100%;
+}
+
+.star {
+  width: 10px;
+  height: 10px;
+}
+
+.star svg {
+  color: var(--star);
+}
+
+#wrapper {
+  display: flex;
+  height: 99vh;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1,
+p,
+li {
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+button {
+  background: var(--button-background);
+  border-radius: 2ex;
+  color: var(--button-text);
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.75ex 2ex 1ex 2ex;
+}
+
+button:hover {
+  background: var(--button-background-hover);
+}
+
+button:active {
+  background: var(--button-background-active);
+}
