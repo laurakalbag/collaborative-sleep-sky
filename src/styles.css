@@ -127,6 +127,19 @@ select {
   font-weight: 1 999;
 }
 
+/* Animations */
+
+@keyframes star-animation {
+  0% {
+    opacity: 0;
+    transform: opacity(0);
+  }
+  100% {
+    opacity: 1;
+    transform: opacity(1);
+  }
+}
+
 /* Background */
 
 body {
@@ -140,23 +153,26 @@ body {
 }
 
 #starscape {
-  height: 99vh;
+  height: 90dvh;
   position: absolute;
   width: 100%;
 }
 
 .star {
-  width: 10px;
-  height: 10px;
+  width: 1em;
+  height: 1em;
+  animation: star-animation 1s ease-out;
+  position: absolute;
 }
 
 .star svg {
   color: var(--star);
+  position: relative;
 }
 
 #wrapper {
   display: flex;
-  height: 99vh;
+  height: 90dvh;
   align-items: center;
   justify-content: center;
   width: 100%;
