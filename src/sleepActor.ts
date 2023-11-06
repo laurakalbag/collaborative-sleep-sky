@@ -1,6 +1,4 @@
 import { actorFromStately } from '@statelyai/sky';
-import { v4 as uuidv4 } from 'uuid';
-import { createActor, fromCallback } from 'xstate';
 import { starGraphic } from './graphics';
 import { skyConfig } from './sleepActor.sky';
 import './styles.css';
