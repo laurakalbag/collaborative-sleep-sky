@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite --force",
     "lint": "tsc",
-    "sky": "xstate sky \"./src/**/*.ts?(x)\""
+    "sky": "xstate sky \"./src/**/*.ts?(x)\"",
+    "build": "vite build"
   },
   "dependencies": {
     "@statelyai/sky": "0.0.5",
