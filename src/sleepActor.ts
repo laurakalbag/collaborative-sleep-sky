@@ -100,7 +100,7 @@ const actor = await actorFromStately(
 );
 
 actor.subscribe((snapshot) => {
-  console.log('Actor changed:', snapshot);
+  // console.log('Actor changed:', snapshot);
 });
 
 actor.start();
@@ -128,7 +128,7 @@ function randomAudio() {
     track = 'three.mp3';
   }
   audio.src = `${audioUrlPrefix}/${track}`;
-  console.log('Randomised audio', audio.src);
+  // console.log('Randomised audio', audio.src);
 }
 
 randomAudio();
