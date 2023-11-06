@@ -159,6 +159,7 @@ body {
 
 #background {
   background: var(--background-black) var(--background-black-gradient);
+  height: 100vh;
 }
 
 #starscape {
@@ -199,6 +200,10 @@ li {
   text-align: center;
 }
 
+p + p {
+  margin-top: -1.5rem;
+}
+
 h1 {
   font-size: 3rem;
   font-weight: normal;
@@ -208,6 +213,10 @@ h1 {
 ul {
   list-style-type: none;
   padding: 0;
+}
+
+#colour-name {
+  font-weight: bold;
 }
 
 #buttons {

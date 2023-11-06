@@ -10,6 +10,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div id="content">
     <h1>Collaborative sleep</h1>
     <p>There <span id="star-number">are 0 stars</span> online.</p>
+    <p>The current background colour is <span id="colour-name">black</span>.</p>
     <ul id="buttons">
       <li><button id="sound-toggle">Turn sound on</button></li>
       <li><button id="colour-toggle">Toggle colour</button></li>
@@ -152,6 +153,7 @@ interface Background {
 }
 
 const background = document.querySelector('#background') as Element & Background;
+const colourName = document.querySelector('#colour-name') as Element;
 
 function updateColour(state: any) {
   const colourBlack = state.matches({
@@ -165,10 +167,13 @@ function updateColour(state: any) {
   });
   if (colourBlack === true) {
     background.style.background = "var(--background-black) var(--background-black-gradient)";
+    colourName.innerHTML = 'black';
   } else if (colourBlue === true) {
     background.style.background = "var(--background-blue) var(--background-blue-gradient)";
+    colourName.innerHTML = 'blue';
   } else if (colourPurple === true) {
     background.style.background = "var(--background-purple) var(--background-purple-gradient)";
+    colourName.innerHTML = 'purple';
   }
 }
 
