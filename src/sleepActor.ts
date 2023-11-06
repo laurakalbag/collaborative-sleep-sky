@@ -4,6 +4,7 @@ import { skyConfig } from './sleepActor.sky';
 import './styles.css';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+<div id="background">
 <div id="starscape"></div>
 <div id="wrapper">
   <div id="content">
@@ -11,6 +12,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <p>There <span id="star-number">are 0 stars</span> online.</p>
     <ul id="buttons">
       <li><button id="sound-toggle">Turn sound on</button></li>
+      <li><button id="colour-toggle">Toggle colour</button></li>
     </ul>
   </div>
   <audio id="audio-player" loop>
@@ -18,6 +20,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       Sorry your browser does not support the audio player.
     </p>
   </audio>
+</div>
 </div>
 `;
 
@@ -80,7 +83,7 @@ let numberOfPlayers: number;
 
 const actor = await actorFromStately(
   {
-    url: 'https://sky.stately.ai/GK0FU3',
+    url: 'https://sky.stately.ai/YRV2Un',
     sessionId: 'shared-session',
     onPlayerJoined(info) {
       numberOfPlayers = info.numberOfPlayers;
@@ -102,12 +105,9 @@ actor.subscribe((snapshot) => {
 
 actor.start();
 
-interface SoundButton {
-  value: string;
-}
-const soundButton = document.querySelector('#sound-toggle') as Element &
-  SoundButton;
+const soundButton = document.querySelector('#sound-toggle') as Element;
 const audio = document.querySelector('#audio-player') as any;
+const colourButton = document.querySelector('#colour-toggle') as Element
 
 function getRandomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -147,8 +147,40 @@ function updateSoundButtonText(state: any) {
   }
 }
 
+interface Background {
+  style: any;
+}
+
+const background = document.querySelector('#background') as Element & Background;
+
+function updateColour(state: any) {
+  const colourBlack = state.matches({
+    Colour: 'Black',
+  });
+  const colourBlue = state.matches({
+    Colour: 'Blue',
+  });
+  const colourPurple = state.matches({
+    Colour: 'Purple',
+  });
+  if (colourBlack === true) {
+    background.style.background = "var(--background-black) var(--background-black-gradient)";
+  } else if (colourBlue === true) {
+    background.style.background = "var(--background-blue) var(--background-blue-gradient)";
+  } else if (colourPurple === true) {
+    background.style.background = "var(--background-purple) var(--background-purple-gradient)";
+  }
+}
+
 soundButton?.addEventListener('click', () => {
   actor.send({ type: 'toggle sound' });
 
   updateSoundButtonText(actor.getSnapshot());
 });
+
+colourButton?.addEventListener('click', () => {
+  actor.send({ type: 'toggle colour' });
+
+  updateColour(actor.getSnapshot());
+});
+

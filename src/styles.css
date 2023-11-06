@@ -21,7 +21,7 @@ body {
   line-height: 1.35;
   margin: 0;
   min-height: 100vh;
-  padding: 1em;
+  padding: 0;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
 }
@@ -104,11 +104,25 @@ select {
 /* Variables */
 
 :root {
-  --background: rgb(127, 123, 201);
-  --background-gradient: linear-gradient(
+  --background-black: rgb(94, 90, 102);
+  --background-black-gradient: linear-gradient(
     0deg,
-    var(--background) 0%,
+    var(--background-black) 0%,
+    rgba(38, 35, 46, 1) 35%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  --background-purple: rgb(127, 123, 201);
+  --background-purple-gradient: linear-gradient(
+    0deg,
+    var(--background-purple) 0%,
     rgba(80, 62, 124, 1) 35%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  --background-blue: rgb(123, 144, 201);
+  --background-blue-gradient: linear-gradient(
+    0deg,
+    var(--background-blue) 0%,
+    rgba(61, 75, 124, 1) 35%,
     rgba(0, 0, 0, 1) 100%
   );
   --text: white;
@@ -135,13 +149,16 @@ select {
 /* Background */
 
 body {
-  background: var(--background) var(--background-gradient);
   color: var(--text);
   font-family: Georgia, serif;
   font-synthesis: none;
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: normal;
   line-height: 1.5;
+}
+
+#background {
+  background: var(--background-black) var(--background-black-gradient);
 }
 
 #starscape {
@@ -184,7 +201,7 @@ li {
 
 h1 {
   font-size: 3rem;
-  font-weight: 800;
+  font-weight: normal;
   margin-bottom: 0;
 }
 
@@ -193,14 +210,21 @@ ul {
   padding: 0;
 }
 
+#buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 button {
   background: var(--button-background);
   border-radius: 2ex;
   color: var(--button-text);
-  font-size: 1.75rem;
-  font-weight: 600;
+  font-size: 1.5rem;
+  font-family: monospace;
+  font-weight: bold;
   line-height: 1;
-  padding: 0.75ex 2ex 1ex 2ex;
+  padding: 1ex 2ex;
 }
 
 button:hover {

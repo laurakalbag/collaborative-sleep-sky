@@ -9,7 +9,6 @@ const machine = createMachine(
     id: 'Sleep',
     states: {
       Sound: {
-        description: 'Sound is local to the user.',
         initial: 'Off',
         states: {
           Off: {
@@ -28,21 +27,27 @@ const machine = createMachine(
           },
         },
       },
-      Stars: {
-        description: 'Stars are shared for all users.',
-        initial: 'Idle',
+      Colour: {
+        initial: 'Black',
         states: {
-          Idle: {
+          Black: {
             on: {
-              'User joined': {
-                target: 'Active session',
+              'toggle colour': {
+                target: 'Purple',
               },
             },
           },
-          'Active session': {
+          Purple: {
             on: {
-              'User left': {
-                target: 'Idle',
+              'toggle colour': {
+                target: 'Blue',
+              },
+            },
+          },
+          Blue: {
+            on: {
+              'toggle colour': {
+                target: 'Black',
               },
             },
           },
@@ -51,10 +56,7 @@ const machine = createMachine(
     },
     type: 'parallel',
     types: {
-      events: {} as
-        | { type: 'User left' }
-        | { type: 'User joined' }
-        | { type: 'toggle sound' },
+      events: {} as { type: 'toggle sound' } | { type: 'toggle colour' },
       context: {} as { stars: number },
     },
   },
@@ -66,6 +68,6 @@ const machine = createMachine(
   },
 );
 export const skyConfig = {
-  actorId: 'abe111f9-4fcf-4c7b-9daa-42647db5520e',
+  actorId: 'ea6d8903-6e06-4e7c-a51e-70fad496419b',
   machine,
 };
