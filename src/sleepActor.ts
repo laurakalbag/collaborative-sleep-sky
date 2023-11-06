@@ -10,7 +10,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div id="content">
     <h1>Collaborative sleep</h1>
     <p>There <span id="star-number">are 0 stars</span> online.</p>
-    <p>The current background colour is <span id="colour-name">black</span>.</p>
+    <p>Your current background colour is <span id="colour-name">black</span>.</p>
     <ul id="buttons">
       <li><button id="sound-toggle">Turn sound on</button></li>
       <li><button id="colour-toggle">Toggle colour</button></li>
