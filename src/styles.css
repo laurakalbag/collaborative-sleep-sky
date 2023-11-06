@@ -169,8 +169,6 @@ body {
 }
 
 .star {
-  width: 1em;
-  height: 1em;
   animation: star-animation 1s ease-out;
   position: absolute;
 }

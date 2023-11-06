@@ -1,5 +1,5 @@
 import { actorFromStately } from '@statelyai/sky';
-import { starGraphic } from './graphics';
+import { starGraphicOne, starGraphicTwo, starGraphicThree } from './graphics';
 import { skyConfig } from './sleepActor.sky';
 import './styles.css';
 
@@ -54,7 +54,16 @@ function addStarToStarscape() {
   let newStar = document.createElement('div') as Element & Star;
   const starId = newStar.id;
   starmap.set(starId, starPosition);
-  newStar.innerHTML = starGraphic;
+  const chooseStarGraphic: number = getRandomInt(1, 3);
+  let graphic = starGraphicOne;
+  if (chooseStarGraphic === 1) {
+    graphic = starGraphicOne;
+  } else if (chooseStarGraphic === 2) {
+    graphic = starGraphicTwo;
+  } else if (chooseStarGraphic === 3) {
+    graphic = starGraphicThree;
+  }
+  newStar.innerHTML = graphic;
   newStar.className = 'star';
   newStar.style.left = starPosition.x + `dvw`;
   newStar.style.top = starPosition.y + `dvh`;
