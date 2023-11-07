@@ -26,7 +26,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 `;
 
 const starscape = document.querySelector('#starscape') as Element;
-const starmap: Map<string, { x: number; y: number }> = new Map();
 
 // Add stars
 
@@ -46,14 +45,12 @@ function starCoOrdinates() {
   return cooridinates;
 }
 
-function addStarToStarscape() {
+function addNewStar() {
   var starPosition = starCoOrdinates();
   interface Star {
     style: any;
   }
   let newStar = document.createElement('div') as Element & Star;
-  const starId = newStar.id;
-  starmap.set(starId, starPosition);
   const chooseStarGraphic: number = getRandomInt(1, 3);
   let graphic = starGraphicOne;
   if (chooseStarGraphic === 1) {
@@ -70,10 +67,18 @@ function addStarToStarscape() {
   starscape.prepend(newStar);
 }
 
+function addStarToStarscape(numberOfPlayers: number) {
+  const existingPlayers = numberOfPlayers;
+  const currentPlayers = existingPlayers - 1;
+  for(let i = 0; i < currentPlayers; i++) {
+    addNewStar();
+  }
+  addNewStar();
+}
+
 function removeStarFromStarscape() {
   const star = starscape.querySelector('.star');
   if (star) {
-    starmap.delete(star.id);
     starscape.removeChild(star);
   }
 }
@@ -97,13 +102,13 @@ const actor = await actorFromStately(
     sessionId: 'shared-session',
     onPlayerJoined(info) {
       numberOfPlayers = info.numberOfPlayers;
-      addStarToStarscape();
       updateStarsCount(numberOfPlayers);
+      addStarToStarscape(numberOfPlayers);
     },
     onPlayerLeft(info) {
       numberOfPlayers = info.numberOfPlayers;
-      removeStarFromStarscape();
       updateStarsCount(numberOfPlayers);
+      removeStarFromStarscape();
     },
   },
   skyConfig,
