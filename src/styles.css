@@ -190,6 +190,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: .9;
 }
 
 h1,
@@ -218,9 +219,11 @@ ul {
 }
 
 #buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  opacity: .8;
+}
+
+#buttons li + li {
+  margin-top: 1rem;
 }
 
 button {
