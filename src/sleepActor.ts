@@ -69,17 +69,26 @@ function addNewStar() {
 
 function addStarToStarscape(numberOfPlayers: number) {
   const existingPlayers = numberOfPlayers;
-  const currentPlayers = existingPlayers - 1;
-  for(let i = 0; i < currentPlayers; i++) {
+  let stars = starscape.querySelectorAll('.star');
+  while (stars.length < existingPlayers) {
     addNewStar();
+
+    stars = starscape.querySelectorAll('.star');
+
   }
-  addNewStar();
 }
 
-function removeStarFromStarscape() {
+function removeStarFromStarscape(numberOfPlayers: number) {
+  const existingPlayers = numberOfPlayers;
   const star = starscape.querySelector('.star');
-  if (star) {
-    starscape.removeChild(star);
+  let stars = starscape.querySelectorAll('.star');
+  while (stars.length > existingPlayers) {
+    if (star !== null) {
+      starscape.removeChild(star);
+  
+    }
+    stars = starscape.querySelectorAll('.star');
+    console.log('Removing: New stars length', stars.length);
   }
 }
 
@@ -108,7 +117,7 @@ const actor = await actorFromStately(
     onPlayerLeft(info) {
       numberOfPlayers = info.numberOfPlayers;
       updateStarsCount(numberOfPlayers);
-      removeStarFromStarscape();
+      removeStarFromStarscape(numberOfPlayers);
     },
   },
   skyConfig,
