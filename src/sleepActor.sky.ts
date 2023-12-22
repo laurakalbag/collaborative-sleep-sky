@@ -3,6 +3,7 @@ import { createMachine } from 'xstate';
 
 const machine = createMachine(
   {
+    /** @xstate-layout N4IgpgJg5mDOIC5QGUA2YwAcB0yD2ArgHYTYDyAZhQMQAueUU6ABLISQNoAMAuoqJjywAlrWF4i-EAA9EAZgDsANmxcArAq4AmNYqVaAHHK1KANCACeiLQrnYtWrkoUBGACxa5Sgy60BfP3M0DBx8YlIyIjoGJjBWdghuPiQQQRExCSlZBD1VDW1dZUNjM0tEFyN7RyUlAE45LxcuBQCg9CxsAGE8VEIAJ2wAIVQAQwBjAGtoxhYxnv6kqTTRcUkU7M8DVS4drjcXBTV3AzVzKwQarWw1HfcFBS03NyVdVpBgju7eggGABR-MOhprFmHNvn1Fillhk1qBsmo3FxsHI3HIfM4GnsXmdEJdrrc3PdHs9XoF3u0cF9+kNUAQwMDZvMfpCBEIVpl1tY0dtdvtDsdTmUEBorjcuO41EovAZai43h9QglsAA5MAAd1YtBGtDiWmoAFEAG5gIi0ZguFmpNkwrKIRG1bAnBRuAwGNw3NRqAxaHE5RRVJy2I6+T0IgJkoh4CBwKQKpbW1a2hC+X0AWmc2Hu9TkzR2xlqLTJCtwCXj6UTnOTTUzcgLkpq+3dblqvpOmeqUuMCiMaIM8opJfC5CoZfZsJk1meeU0Wl84pcKPuvoqDrRtilSg8BicRn7IUHJHI4+hFbhiARCkzC5zstqrqU6mXMuRBnXXi3O7ke8+TL6o5tlYPr6hJqDy7iGKiijuEo36Ur+NLjBM-6nhOyZcAYvoaFsNTeLWtSomotTobBXTwf8fSAmAyEcmeCD7EiKJoiGWF3o+Qo1C4mY3BUBiXPo7gkVSPw0nS1HjtkrhXN4RTBhotRKC4mHdtgOFGLU+FyIRxFFgOYSHqqGqwFqOrmmJSZepetSzk43gIgW4q+jYdjPOoXruq47huCRemkAZmrarqZmVi4Xo1nWOGNp6vpyO4qi1JK3oKVoBZWeGfhAA */
     context: {
       stars: 0,
     },
@@ -18,6 +19,7 @@ const machine = createMachine(
               },
             },
           },
+
           On: {
             on: {
               'toggle sound': {
@@ -25,6 +27,13 @@ const machine = createMachine(
               },
             },
           },
+
+          "New state 1": {},
+          "New state 2": {
+            on: {
+              "Event 1": "New state 1"
+            }
+          }
         },
       },
       Colour: {
