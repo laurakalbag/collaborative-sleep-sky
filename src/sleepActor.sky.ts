@@ -33,18 +33,18 @@ const machine = createMachine(
           Black: {
             on: {
               'toggle colour': {
-                target: 'Purple',
-              },
-            },
-          },
-          Purple: {
-            on: {
-              'toggle colour': {
                 target: 'Blue',
               },
             },
           },
           Blue: {
+            on: {
+              'toggle colour': {
+                target: 'Purple',
+              },
+            },
+          },
+          Purple: {
             on: {
               'toggle colour': {
                 target: 'Black',
